@@ -216,6 +216,9 @@ u1_t os_getBattLevel (void);
 //! Return non-zero if any jobs are scheduled between now and now+time.
 bit_t os_queryTimeCriticalJobs(ostime_t time);
 #endif
+#ifndef os_getNextDeadline
+ostime_t os_getNextDeadline(bit_t *valid);
+#endif
 
 #ifndef os_rlsbf4
 //! Read 32-bit quantity from given pointer in little endian byte order.

@@ -167,3 +167,26 @@ bit_t os_queryTimeCriticalJobs(ostime_t time) {
     else
         return 0;
 }
+
+// Return the tick the next runnable or scheduled job is due.
+//
+// A runnable job want to run as soon as possible, so 'now' is returned
+// if a runnable job exists. Otherwise, if there is a scheduled job the
+// tick value for when that job will run is returned.
+//
+// If there is a runnable or scheduled job then valid will be non-zero
+// upon return. If valid is zero, it means nothing is scheduled to run.
+ostime_t os_getNextDeadline(bit_t *valid) {
+    if (OS.runnablejobs) {
+        *valid  = 1;
+        return os_getTime();
+    }
+
+    if (OS.scheduledjobs) {
+        *valid = 1;
+        return OS.scheduledjobs->deadline;
+    }
+
+    *valid = 0;
+    return 0;
+}
