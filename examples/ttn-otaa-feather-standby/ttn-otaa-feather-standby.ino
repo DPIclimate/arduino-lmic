@@ -46,7 +46,6 @@
 
 #include <lmic.h>
 #include <hal/hal.h>
-#include <SPI.h>
 #include <RTCZero.h>
 
 RTCZero rtc;
@@ -290,6 +289,7 @@ void do_send(osjob_t* j) {
 
         // Prepare upstream data transmission at the next possible time.
         log_msg("Sending uplink");
+        counter++;
         LMIC_setTxData2(1, (xref2u1_t)&counter, sizeof(counter), 0);
     }
 }
