@@ -50,7 +50,7 @@ int os_init_ex (const void *pintable) {
 void os_init() {
     if (os_init_ex((const void *)&lmic_pins))
         return;
-    ASSERT(0);
+    LMIC_ASSERT(0);
 }
 
 ostime_t os_getTime () {

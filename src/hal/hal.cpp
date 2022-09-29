@@ -31,9 +31,9 @@ static void hal_interrupt_init(); // Fwd declaration
 
 static void hal_io_init () {
     // NSS and DIO0 are required, DIO1 is required for LoRa, DIO2 for FSK
-    ASSERT(plmic_pins->nss != LMIC_UNUSED_PIN);
-    ASSERT(plmic_pins->dio[0] != LMIC_UNUSED_PIN);
-    ASSERT(plmic_pins->dio[1] != LMIC_UNUSED_PIN || plmic_pins->dio[2] != LMIC_UNUSED_PIN);
+    LMIC_ASSERT(plmic_pins->nss != LMIC_UNUSED_PIN);
+    LMIC_ASSERT(plmic_pins->dio[0] != LMIC_UNUSED_PIN);
+    LMIC_ASSERT(plmic_pins->dio[1] != LMIC_UNUSED_PIN || plmic_pins->dio[2] != LMIC_UNUSED_PIN);
 
 //    Serial.print("nss: "); Serial.println(plmic_pins->nss);
 //    Serial.print("rst: "); Serial.println(plmic_pins->rst);
@@ -365,9 +365,9 @@ uint8_t hal_getIrqLevel(void) {
     return irqlevel;
 }
 
-void hal_sleep () {
-    // Not implemented
-}
+//void hal_sleep () {
+//    // Not implemented
+//}
 
 // -----------------------------------------------------------------------------
 

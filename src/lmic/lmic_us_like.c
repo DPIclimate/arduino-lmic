@@ -48,10 +48,10 @@
 ///     be a multiple of 16.
 ///
 static void setNextChannel(uint16_t start, uint16_t end, uint16_t count) {
-        ASSERT(count>0);
-        ASSERT(start<end);
-        ASSERT(count <= (end - start));
-        ASSERT((start & 0xF) == 0);
+        LMIC_ASSERT(count>0);
+        LMIC_ASSERT(start<end);
+        LMIC_ASSERT(count <= (end - start));
+        LMIC_ASSERT((start & 0xF) == 0);
         uint16_t const mapStart = start >> 4;
         uint16_t const mapEntries = (end - start + 15) >> 4;
 
@@ -249,7 +249,7 @@ void LMICuslike_initJoinLoop(void) {
 
         // make sure LMIC.txend is valid.
         LMIC.txend = os_getTime();
-        ASSERT((LMIC.opmode & OP_NEXTCHNL) == 0);
+        LMIC_ASSERT((LMIC.opmode & OP_NEXTCHNL) == 0);
 
         // make sure the datarate is set to DR2 per LoRaWAN regional reqts V1.0.2,
         // section 2.*.2

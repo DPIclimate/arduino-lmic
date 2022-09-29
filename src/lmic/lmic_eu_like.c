@@ -137,7 +137,7 @@ void LMICeulike_initJoinLoop(uint8_t nDefaultChannels, s1_t adrTxPow) {
         // will allow support for EU-style bandplans with similar code.
         LMICcore_setDrJoin(DRCHG_SET, LMICbandplan_getInitialDrJoin());
         LMICbandplan_initDefaultChannels(/* put into join mode */ 1);
-        ASSERT((LMIC.opmode & OP_NEXTCHNL) == 0);
+        LMIC_ASSERT((LMIC.opmode & OP_NEXTCHNL) == 0);
         LMIC.txend = os_getTime() + LMICcore_rndDelay(8);
 }
 #endif // DISABLE_JOIN
