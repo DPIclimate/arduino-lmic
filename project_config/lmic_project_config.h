@@ -8,3 +8,9 @@
 //#define CFG_in866 1
 #define CFG_sx1276_radio 1
 //#define LMIC_USE_INTERRUPTS
+
+
+// Re-assign hal_init to handle naming conflict on ESP32
+#if defined(ARDUINO_ESP32_MICROMOD)
+#define hal_init LMICHAL_init // ESP32: https://github.com/mcci-catena/arduino-lmic/issues/714
+#endif // defined(ARDUINO_ESP32_MICROMOD)

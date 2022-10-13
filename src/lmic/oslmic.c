@@ -149,8 +149,9 @@ void os_runloop_once() {
     } else if(OS.scheduledjobs && hal_checkTimer(OS.scheduledjobs->deadline)) { // check for expired timed jobs
         j = OS.scheduledjobs;
         OS.scheduledjobs = j->next;
-    } else { // nothing pending
-        hal_sleep(); // wake by irq (timer already restarted)
+    } else { 
+		// nothing pending
+        // hal_sleep(); // wake by irq (timer already restarted)
     }
     hal_enableIRQs();
     if(j) { // run job callback
