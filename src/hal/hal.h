@@ -13,6 +13,7 @@
 #define _hal_hal_h_
 
 #include "arduino_lmic_hal_configuration.h"
+#include "lmic/oslmic_types.h"
 
 // for compatbility reasons, we need to disclose the configuration
 // structure as global type lmic_pinmap.
